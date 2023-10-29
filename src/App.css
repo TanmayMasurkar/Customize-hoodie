@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.Customhoodies{
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  /* grid-template-rows:1fr; */
+}
+
+.image-box{
+  border: 1px solid red;
+  /* padding: 10px; */
+}
+
+.image-box img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.thumbnails{
+  border: 1px solid red;
+  /* padding: 10px; */
+}
+
+.thumbnails .thumbnail{
+  border: 1px solid green;
+  height: 120px;
+  width: 120px;
+  margin: 10px auto;
+  /* border-radius: 100%;
+  overflow: hidden; */
+}
+
+.thumbnails .thumbnail img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}

@@ -37,16 +37,23 @@
   }
 }
 
+/* avatar border */
+.css-1ytufz-MuiAvatarGroup-root .MuiAvatar-root{
+  border: 2px solid #f9f9f93d  !important;   
+}
+
 .Customhoodies{
   border: 1px solid black;
   display: grid;
   grid-template-columns: 4fr 1fr;
   /* grid-template-rows:1fr; */
+  height: 100%;
 }
 
 .image-box{
   border: 1px solid red;
   /* padding: 10px; */
+  position: relative;
 }
 
 .image-box img{
@@ -74,3 +81,53 @@
   width: 100%;
   object-fit: cover;
 }
+
+
+/* front  */
+.canvas-box.front {
+  border: 2px solid rgb(0, 137, 0);
+  position: absolute;
+  height: 160px;
+  width: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+}
+
+/* back */
+.canvas-box.back {
+  border: 2px solid rgb(0, 137, 0);
+  position: absolute;
+  height: 250px;
+  width: 150px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -35%);
+  overflow: hidden;
+}
+
+/* right */
+.canvas-box.left {
+  border: 2px solid rgb(0, 137, 0);
+  position: absolute;
+  height: 200px;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-125%, -15%);
+  overflow: hidden;
+}
+
+/* right */
+.canvas-box.right {
+  border: 2px solid rgb(0, 137, 0);
+  position: absolute;
+  height: 200px;
+  width: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(20%, -15%);
+  overflow: hidden;
+}
+

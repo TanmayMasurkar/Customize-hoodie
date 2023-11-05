@@ -8,13 +8,11 @@ import {
   Stack,
   MenuItem,
   Avatar,
-  IconButton,
   Popover,
-  AvatarGroup,
   Button,
 } from "@mui/material";
+import FileUploadOutlinedIcon from "@mui/icons-material/FileUploadOutlined";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import GroupAddOutlinedIcon from "@mui/icons-material/GroupAddOutlined";
 
 const MENU_OPTIONS = [
   {
@@ -31,7 +29,7 @@ const MENU_OPTIONS = [
   },
 ];
 
-export default function AccountPopover() {
+export default function SharePopover() {
   const [open, setOpen] = useState(null);
   const theme = useTheme();
   const isMobileView = useMediaQuery(theme.breakpoints.down("sm"));
@@ -44,65 +42,43 @@ export default function AccountPopover() {
     setOpen(null);
   };
 
+  const buttonStyles = {
+    py: 1,
+    minWidth: isMobileView ? "45px" : null,
+    px: isMobileView ? 0 : null,
+    overflow: "hidden",
+    bgcolor: isMobileView ? "transparent" : "#fff",
+    color: isMobileView ? "#fff" : "#000",
+    border: "none",
+    "&:hover": {
+      bgcolor: isMobileView ? "transparent" : "#fff",
+      color: isMobileView ? "#fff" : "#000",
+      border: "none",
+    },
+    ...(open && {
+      "&:before": {
+        bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
+      },
+    }),
+  };
+
   return (
     <>
-      {isMobileView ? (
-        <Button
-          variant="outlined"
-          onClick={handleOpen}
+      <Button
+        variant="outlined"
+        onClick={handleOpen}
+        sx={buttonStyles}
+      >
+        <FileUploadOutlinedIcon
           sx={{
-            py: 1,
-            bgcolor: "transparent",
-            color: "#fff",
-            minWidth: "45px",
-            px: 0,
-            border: "none",
-            "&:hover": {
-              bgcolor: "transparent",
-              color: "#fff",
-              border: "none",
-            },
-            ...(open && {
-              "&:before": {
-                bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
-              },
-            }),
+            mx: isMobileView ? 0 : -0.5,
+            mr: isMobileView ? 0 : 0.3,
+            fontSize: isMobileView ? "30px" : null,
           }}
-        >
-          <GroupAddOutlinedIcon
-            sx={{
-              color: "#fff",
-              fontSize: isMobileView ? "30px" : null,
-            }}
-          />
-        </Button>
-      ) : (
-        <AvatarGroup max={4}>
-          <Avatar
-            onClick={handleOpen}
-            sx={{
-              p: 0,
-              height: 40,
-              width: 40,
-              border: "1px solid transparent",
-              ...(open && {
-                "&:before": {
-                  zIndex: 1,
-                  content: "''",
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "50%",
-                  position: "absolute",
-                  bgcolor: (theme) => alpha(theme.palette.grey[900], 0.8),
-                },
-              }),
-            }}
-            src={"photoURL"}
-            alt="photoURL"
-          />
-          <CustomAvatar icon="+" />
-        </AvatarGroup>
-      )}
+        />
+        {isMobileView ? null : "Share"}
+      </Button>
+
       <Popover
         open={Boolean(open)}
         anchorEl={open}
@@ -114,7 +90,7 @@ export default function AccountPopover() {
             p: 0,
             mt: 1.5,
             ml: 0.75,
-            width: 180,
+            width: 400,
             "& .MuiMenuItem-root": {
               typography: "body2",
               borderRadius: 0.75,
@@ -146,21 +122,5 @@ export default function AccountPopover() {
         <MenuItem sx={{ m: 1 }}>Logout</MenuItem>
       </Popover>
     </>
-  );
-}
-
-function CustomAvatar({ icon }) {
-  return (
-    <Avatar
-      sx={{
-        bgcolor: "#8C62EA",
-        color: "primary.contrastText",
-        width: 40,
-        height: 40,
-        border: "2px solid transparent",
-      }}
-    >
-      {icon}
-    </Avatar>
   );
 }
